@@ -1,15 +1,11 @@
 const Express = require('express');
 const recipeRoute = require('./routes/recipe');
 const BodyParser = require('body-parser');
-const MongoClient = require('mongodb').MongoClient;
-const ObjectId = require('mongodb').ObjectID;
-
-const CONNECTION_URL =
-	'mongodb+srv://betty:Peach-p!3@cookbook-db-6mqam.mongodb.net/test?retryWrites=true&w=majority';
-const DATABASE_NAME = 'cookbook';
+var cors = require('cors');
 
 var app = Express();
 
+app.use(cors());
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 
