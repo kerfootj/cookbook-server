@@ -12,7 +12,16 @@ const RecipeSchema = Schema({
 		required: true
 	},
 	description: String,
-	imageUrl: String
+	image: {
+		id: {
+			type: String,
+			required: true
+		},
+		deleteHash: {
+			type: String,
+			required: true
+		}
+	}
 });
 
 module.exports = mongoose.model('Recipe', RecipeSchema);
