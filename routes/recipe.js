@@ -3,8 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/recipe', (req, res) => {
-	RecipeModel.find({})
-		.then(document => res.json(document))
+	RecipeModel.find({}, '-ingredients -instructions')
+		.then(document => {
+			res.json(document);
+		})
 		.catch(error => res.status(500).json(error));
 });
 
