@@ -1,9 +1,12 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-auto-increment');
 
 mongoose.connect(
-	'mongodb+srv://betty:Peach-p!3@cookbook-db-6mqam.mongodb.net/cookbook?retryWrites=true&w=majority',
+	`mongodb+srv://${process.env.MONGO_DB_USER}:${
+		process.env.MONGO_DB_PASSWORD
+	}@cookbook-db-6mqam.mongodb.net/cookbook?retryWrites=true&w=majority`,
 	{ useNewUrlParser: true }
 );
 
