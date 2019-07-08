@@ -30,6 +30,31 @@ const RecipeSchema = Schema({
 		deleteHash: {
 			type: String
 		}
+	},
+	prep: {
+		type: String,
+		required: true
+	},
+	cook: {
+		type: String,
+		required: true
+	},
+	ready: {
+		type: String,
+		required: true
+	},
+	servings: {
+		type: Number,
+		required: true
+	},
+	private: {
+		type: Boolean,
+		required: true
+	},
+	uid: {
+		type: String,
+		required: true,
+		unique: true
 	}
 });
 
