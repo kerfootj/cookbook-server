@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const autoIncrement = require('mongoose-auto-increment');
 
+console.log(process.env.MONGO_DB_USER + ':' + process.env.MONGO_DB_PASSWORD);
+
 mongoose.connect(
 	`mongodb+srv://${process.env.MONGO_DB_USER}:${
 		process.env.MONGO_DB_PASSWORD
@@ -56,8 +58,7 @@ const RecipeSchema = Schema({
 	},
 	uid: {
 		type: String,
-		required: true,
-		unique: true
+		required: true
 	}
 });
 
