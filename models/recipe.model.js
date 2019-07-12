@@ -59,7 +59,9 @@ const RecipeSchema = Schema({
 	uid: {
 		type: String,
 		required: true
-	}
+	},
+	madeit: Number,
+	likes: Number
 });
 
 RecipeSchema.plugin(autoIncrement.plugin, 'Recipe');
