@@ -33,4 +33,34 @@ router.post('/recipe', (req, res) => {
 		});
 });
 
+router.post('/recipe/madeit', (req, res) => {
+	const id = req.query.id;
+	const uid = req.query.uid;
+
+	// TODO: verify that the user hasn't already clicked made it yet
+
+	RecipeModel.findOneAndUpdate({ _id: id }, { $inc: { madeit: 1 } })
+		.then(document => {
+			res.json(document);
+		})
+		.catch(error => {
+			res.status(500).json(error);
+		});
+});
+
+router.delete('recipe/madeit', (req, res) => {
+	const id = req.query.id;
+	const uid = req.query.uid;
+
+	// TODO: verify that the user has already clicked made it yet
+
+	RecipeModel.findOneAndUpdate({ _id: id }, { $inc: { madeit: -1 } })
+		.then(document => {
+			res.json(document);
+		})
+		.catch(error => {
+			res.status(500).json(error);
+		});
+});
+
 module.exports = router;
