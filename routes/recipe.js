@@ -28,7 +28,6 @@ router.post('/recipe', (req, res) => {
 			res.json(document);
 		})
 		.catch(error => {
-			console.log(error);
 			res.status(500).json(error);
 		});
 });
