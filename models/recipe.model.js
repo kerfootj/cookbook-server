@@ -34,6 +34,8 @@ const RecipeSchema = Schema({
 			type: String
 		}
 	},
+	tags: [String],
+	rating: Number,
 	prep: {
 		type: String,
 		required: true
