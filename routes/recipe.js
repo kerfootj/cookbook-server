@@ -16,6 +16,7 @@ router.get('/recipe/:recipeId', (req, res) => {
 			res.json(document);
 		})
 		.catch(error => {
+			console.log(error);
 			res.status(500).json(error);
 		});
 });
@@ -28,6 +29,7 @@ router.post('/recipe', (req, res) => {
 			res.json(document);
 		})
 		.catch(error => {
+			console.log(error);
 			res.status(500).json(error);
 		});
 });
@@ -37,7 +39,6 @@ router.post('/recipe/madeit', (req, res) => {
 	const uid = req.query.uid;
 
 	// TODO: verify that the user hasn't already clicked made it yet
-
 	RecipeModel.findOneAndUpdate({ _id: id }, { $inc: { madeit: 1 } })
 		.then(document => {
 			res.json(document);
@@ -52,7 +53,6 @@ router.delete('recipe/madeit', (req, res) => {
 	const uid = req.query.uid;
 
 	// TODO: verify that the user has already clicked made it yet
-
 	RecipeModel.findOneAndUpdate({ _id: id }, { $inc: { madeit: -1 } })
 		.then(document => {
 			res.json(document);
