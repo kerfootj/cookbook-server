@@ -2,13 +2,6 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-mongoose.connect(
-	`mongodb+srv://${process.env.MONGO_DB_USER}:${
-		process.env.MONGO_DB_PASSWORD
-	}@cookbook-db-6mqam.mongodb.net/cookbook?retryWrites=true&w=majority`,
-	{ useNewUrlParser: true }
-);
-
 const UserSchema = Schema({
 	uid: {
 		type: String,
@@ -17,6 +10,7 @@ const UserSchema = Schema({
 	},
 	name: String,
 	profilepic: String,
+	recipes: [Number],
 	madeit: [Number],
 	likes: [Number]
 });
