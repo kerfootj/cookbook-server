@@ -9,7 +9,7 @@ const UserSchema = Schema({
 		unique: true
 	},
 	name: String,
-	profilepic: String,
+	photo: String,
 	recipes: [Number],
 	madeit: [Number],
 	likes: [Number]
