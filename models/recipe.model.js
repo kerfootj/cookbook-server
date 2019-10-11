@@ -6,8 +6,9 @@ const autoIncrement = require('mongoose-auto-increment');
 mongoose.connect(
 	`mongodb+srv://${process.env.MONGO_DB_USER}:${
 		process.env.MONGO_DB_PASSWORD
-	}@cookbook-db-6mqam.mongodb.net/cookbook?retryWrites=true&w=majority`,
-	{ useNewUrlParser: true }
+	}@cookbook-db-6mqam.mongodb.net/cookbook?retryWrites=true&w=majority`, {
+		useNewUrlParser: true
+	}
 );
 
 autoIncrement.initialize(mongoose.connection);
@@ -26,14 +27,10 @@ const RecipeSchema = Schema({
 		type: [String],
 		required: true
 	},
-	image: {
-		id: {
-			type: String
-		},
-		deleteHash: {
-			type: String
-		}
-	},
+	images: [{
+		id: String,
+		deleteHash: String,
+	}],
 	tags: [String],
 	rating: Number,
 	reviews: [String],
