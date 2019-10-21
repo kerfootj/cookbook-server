@@ -14,6 +14,7 @@ mongoose.connect(
 autoIncrement.initialize(mongoose.connection);
 
 const RecipeSchema = Schema({
+	_id: Number,
 	title: {
 		type: String,
 		required: true
