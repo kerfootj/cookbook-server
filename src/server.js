@@ -20,6 +20,6 @@ app.use(recipeRoute);
 app.use(userRoute);
 
 // Handler for 404 - Resource Not Found
-app.use((req, res, next) => {
+app.use((req, res) => {
 	res.status(404).send('THIS PAGE IS NOT FULLY ARMED AND OPERATIONAL');
 });
