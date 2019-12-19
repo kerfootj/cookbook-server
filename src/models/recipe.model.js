@@ -7,7 +7,8 @@ mongoose.connect(
 	`mongodb+srv://${process.env.MONGO_DB_USER}:${
 		process.env.MONGO_DB_PASSWORD
 	}@cookbook-db-6mqam.mongodb.net/cookbook?retryWrites=true&w=majority`, {
-		useNewUrlParser: true
+		useNewUrlParser: true,
+		useUnifiedTopology: true
 	}
 );
 

@@ -2,15 +2,17 @@ const Express = require('express');
 const recipeRoute = require('./routes/recipe');
 const userRoute = require('./routes/user');
 const BodyParser = require('body-parser');
-var cors = require('cors');
+const cors = require('cors');
+const verifyToken = require('./firebase/token');
 
-var app = Express();
+const app = Express();
 
 app.use(cors());
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({
 	extended: true
 }));
+app.use('/', verifyToken);
 
 const server = app.listen(process.env.PORT || 8080, () => {
 	console.log('App running on port', server.address().port);
