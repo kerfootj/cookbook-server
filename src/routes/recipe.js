@@ -2,7 +2,7 @@ const RecipeModel = require('../models/recipe.model');
 const express = require('express'); 
 const router = express.Router();
 
-// Get all recipies without ingredients or instructions
+// Get all recipies
 router.get('/recipe', (req, res) => {
 	RecipeModel.find({private: false}, '-ingredients -instructions -uid')
 		.then(document => {
@@ -24,7 +24,6 @@ router.get('/recipe/:recipeId', (req, res) => {
 			res.json(recipe);
 		})
 		.catch(error => {
-			console.log(error);
 			res.status(500).json(error);
 		});
 });
@@ -79,6 +78,19 @@ router.post('/recipe', (req, res) => {
 				res.status(500).json(error);
 			});
 	}
+});
+
+// Delete a recipe
+router.post('/recipe/delete/:recipeId', (req, res) => {
+	const { uid } = req.body;
+	RecipeModel.deleteOne({
+		_id: req.params.recipeId,
+		uid,
+	}).then(() => {
+		res.status(200).send('recipe deleted');
+	}).catch(error => {
+		res.status(500).json(error);
+	});
 });
 
 module.exports = router;
