@@ -2,9 +2,17 @@ const RecipeModel = require('../models/recipe.model');
 const express = require('express'); 
 const router = express.Router();
 
-// Get all recipies
+// Get all recipies or recipies matching a search
 router.get('/recipe', (req, res) => {
-	RecipeModel.find({private: false}, '-ingredients -instructions -uid')
+	const filter = { private: false };
+
+	// If a search construct a filter
+	if (req.query && req.query.search) {
+		const { search } = req.query;
+		filter.title = { $regex: search, $options: 'i' };
+	}
+
+	RecipeModel.find(filter, '-ingredients -instructions -uid')
 		.then(document => {
 			res.json(document);
 		})
