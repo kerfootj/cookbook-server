@@ -19,7 +19,7 @@
     "express": "^4.17.1",
     "firebase-admin": "^8.8.0",
     "mongodb": "^3.3.3",
-    "mongoose": "^5.7.8",
+    "mongoose": "^5.10.14",
     "mongoose-auto-increment": "^5.0.1"
   },
   "devDependencies": {
